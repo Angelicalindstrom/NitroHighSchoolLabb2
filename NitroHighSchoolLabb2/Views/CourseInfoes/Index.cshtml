@@ -1,0 +1,112 @@
+﻿@model IEnumerable<NitroHighSchoolLabb2.Models.CourseInfo>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>CoursInfo</h1>
+
+
+<p>Get all teachers in choosen Course </p>
+<form asp-action="GetTeachers" method="post">
+    <div class="form-group">
+        <label for="subject">Select Course:</label>
+        <select class="form-control" id="subject" name="subject">
+            <option value="Programmering 1">Programmering 1</option>
+             <option value="Programmering 2">Programmering 2</option>
+              <option value="Programmering 3">Programmering 3</option>
+              <option value="Programmering 3">OOP</option>
+            <!-- "GetTeachers"(ligger i CourseInfoesController) Hämta lärare under en viss kurs -- Meny rull-->
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Get Teachers in this Course</button>
+</form>
+<br/>
+
+<p>Get all students and their Teachers by name</p>
+<!-- "StudentTeacher"(ligger i CourseInfoesController) Hämta alla elever och dess lärare-->
+<form asp-action="StudentTeacher" method="post">
+     <div class="form-group">
+    <button type="submit" class="btn btn-primary">Get All Students and their Teachers</button>
+    </div>
+</form>
+<br/>
+
+<p>Get all students in Programmering 1 and their Teachers by name</p>
+<!-- "CourseWithStudents" Hämta alla Elever i Resp Kurs -->
+<form asp-controller="CourseWithStudents" asp-action="index">
+     <div class="form-group">
+    <button type="submit" class="btn btn-primary">StudentCourses</button>
+    </div>
+</form>
+<br/>
+
+<p>Change name on Course Programmering 2 to OOP</p>
+<!-- "CourseWithStudents" Hämta alla Elever i Resp Kurs -->
+<form asp-controller="UpdateCourseName" asp-action="Index">
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Change Course Name</button>
+    </div>
+</form>
+<br/>
+
+<p>Change Teacher Name In first CourseId Programmering 1 With Teacher Reidar Nielssen To Tobias Landen</p>
+<!-- "ChangeStudentTeacher" Jämföra Id I courseInfo, hitta Reidar och Tobias och första Courseinfo
+med Programmering 1 och byta lärare fråån Reidar Till Tobias -->
+<form asp-controller="ChangeStudentTeacher" asp-action="Index">
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Change Teacher Name</button>
+    </div>
+</form>
+<br/>
+
+<p>
+    <a asp-action="Create">Create New CoursInfo</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Course)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Student)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Teacher)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Status)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Course.CourseName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Student.StudentName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Teacher.TeacherName)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.CourseInfoId">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.CourseInfoId">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.CourseInfoId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<section>
+     <a asp-area="" asp-controller="Home" asp-action="Privacy">Menu</a>
+</section>

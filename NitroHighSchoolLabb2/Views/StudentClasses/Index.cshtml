@@ -1,0 +1,38 @@
+﻿@model IEnumerable<NitroHighSchoolLabb2.Models.StudentClass>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Classes</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.StudentClassName)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.StudentClassName)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.StudentClassId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.StudentClassId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.StudentClassId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+<section>
+     <a asp-area="" asp-controller="Home" asp-action="Privacy">Menu</a>
+</section>

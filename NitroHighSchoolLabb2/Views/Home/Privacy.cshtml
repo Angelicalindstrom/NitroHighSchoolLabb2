@@ -1,0 +1,43 @@
+﻿@{
+    ViewData["Title"] = "Menu Options";
+}
+<h1>@ViewData["Title"]</h1>
+
+<style>
+    /* Styla din vertikala meny här */
+    .navbar-nav {
+        flex-direction: column;
+    }
+    .nav-item {
+        margin-bottom: 10px; /* Lägg till lite mellanrum mellan varje menyelement */
+    }
+</style>
+
+<body>
+     <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <div class="container-fluid">
+            <div class="navbar-collapse collapse d-sm-inline-flex flex-column">
+                <ul class="navbar-nav">
+@*                     <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Test</a>
+                    </li> *@
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Courses" asp-action="Index">Courses</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Students" asp-action="Index">Students</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Teachers" asp-action="Index">Teachers</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="StudentClasses" asp-action="Index">StudentClasses</a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link text-dark" asp-area="" asp-controller="CourseInfoes" asp-action="Index">CourseInfoes</a>
+                    </li>
+               </ul>
+            </div>
+        </div>
+    </nav>
+</body>

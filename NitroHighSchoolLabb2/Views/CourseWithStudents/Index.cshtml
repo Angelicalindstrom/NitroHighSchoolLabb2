@@ -1,0 +1,40 @@
+﻿@model IEnumerable<NitroHighSchoolLabb2.Models.StudentWithTeachers>
+
+@{
+    ViewData["Title"] = "StudentsWithTeachers";
+}
+
+<h1>Students and Their Teachers in Programming 1 Course</h1>
+
+@if (Model != null && Model.Any())
+{
+    @foreach (var course in Model)
+    {
+        // filtrerar efter Programmering 1, om rätt skriver ut varje elev med dennes lärare
+
+        if (course.CourseName == "Programmering 1")
+        {
+            <h4>@course.CourseName</h4>
+
+            @foreach (var student in course.StudentNames)
+            {
+                <h6>Student</h6>
+                @student
+
+                @foreach (var teacher in course.TeacherNames)
+                {
+                    <h6>Teacher</h6>
+                    @teacher
+                }
+            }
+        }
+    }
+}
+else
+{
+    <p>No data found for the selected course.</p>
+}
+
+<div>
+     <a asp-area="" asp-controller="CourseInfoes" asp-action="Index">Back to CourseMenu</a>
+</div>

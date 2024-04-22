@@ -1,0 +1,31 @@
+﻿@model List<string>
+
+@{
+    HashSet<string> addedTeachers = new HashSet<string>();
+}
+
+<h1>All Teachers in Choosen Course</h1>
+
+@if (Model != null && Model.Any())
+{
+    <ul>
+        @foreach (var teacherName in Model)
+        {
+            // Kontrollera om läraren redan har lagts till
+            if (!addedTeachers.Contains(teacherName))
+            {
+                <li>@teacherName</li>
+                // Lägg till läraren i HashSet för att undvika duplicering
+                addedTeachers.Add(teacherName);
+            }
+        }
+    </ul>
+}
+else
+{
+    <p>No teachers found for the selected subject.</p>
+}
+
+<div>
+    <a asp-action="Index">Back to CourseMenu</a>
+</div>

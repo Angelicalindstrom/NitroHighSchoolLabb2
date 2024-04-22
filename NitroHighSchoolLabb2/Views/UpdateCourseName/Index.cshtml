@@ -1,0 +1,15 @@
+﻿@{
+    ViewData["Title"] = "Update Course Name";
+}
+
+<h1>Update Course Name From Programmering 2 to OOP</h1>
+
+@* Post - gör en ändirng på coursNAme i databasen via Controllern UpdateCourseName med UpdateCourseName *@
+<form method="post" action="/UpdateCourseName/UpdateCourseName">
+    <button type="submit" class="btn btn-primary">Update Course Name</button>
+</form>
+
+
+<div>
+     <a asp-area="" asp-controller="CourseInfoes" asp-action="Index">Back to CourseMenu</a>
+</div>

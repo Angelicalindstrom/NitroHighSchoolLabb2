@@ -1,0 +1,18 @@
+﻿@model IEnumerable<IGrouping<string, dynamic>>
+
+<h1>Students and Their Teachers</h1>
+
+
+@foreach (var studentGroup in Model)
+{
+    <h3>@studentGroup.Key</h3>
+    <ul>
+    @foreach (var item in studentGroup)
+    {
+        <li>@item.TeacherName</li>
+    }
+    </ul>
+}
+<div>
+    <a asp-action="Index">Back to CourseMenu </a>
+</div>
